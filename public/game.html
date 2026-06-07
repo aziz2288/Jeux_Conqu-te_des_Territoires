@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conquête des Territoires</title>
+  <link rel="stylesheet" href="/game.css?v=10">
+</head>
+<body>
+  <div class="header-row">
+      <div>
+        
+      </div>
+    <div class="mode-badge" id="mode-badge">
+
+      
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <div id="board" class="board"></div>
+
+    <div class="panel">
+      <div class="card" id="status-card">
+        <h2 id="turn-title">Placement</h2>
+        <div id="current-player"></div>
+        <div id="timer-bar" class="timer-bar" style="display:none">
+          <span id="timer-icon">⏱️</span>
+          <div class="timer-track"><div class="timer-fill" id="timer-fill"></div></div>
+          <span id="timer-text">60s</span>
+        </div>
+        <p id="message"></p>
+      </div>
+
+      <div class="card" id="score-card">
+        <h3>Territoires (51 pour gagner)</h3>
+        <div class="score-line p1" id="score-p1"></div>
+        <div class="score-line p2" id="score-p2"></div>
+        <div class="progress-bar">
+          <div class="progress-p1" id="progress-p1"></div>
+          <div class="progress-p2" id="progress-p2"></div>
+        </div>
+      </div>
+
+      <div class="card" id="actions-card"></div>
+
+      <div class="card legend">
+        <h3>Légende</h3>
+        <div class="legend-grid">
+          <span>S = Soldat (F:3, D:1)</span>
+          <span>C = Cavalier (F:2, D:2)</span>
+          <span>T = Tank (F:5, D:1)</span>
+          <span>⚔️ = Bonus attaque</span>
+          <span>🛡️ = Bonus défense</span>
+          <span>💀 = Piège (-1 HP)</span>
+          <span>🚧 = Zone bloquée (événement)</span>
+          <span>★ / ★★ = Unité promue (XP)</span>
+          <span>🎲 Événement tous les 3 tours</span>
+          <span>🟧 Barrière = bloque (sauf Cavalier)</span>
+        </div>
+      </div>
+
+      <div class="card" id="combat-log-card" style="display:none">
+        <h3>Journal de combat</h3>
+        <div id="combat-log" class="combat-log"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu principal / sélection de mode -->
+  <div id="main-menu" class="menu-overlay" style="display:none">
+    <div class="menu-card">
+      <h2 class="menu-title">Choisissez votre mode</h2>
+      <p class="menu-sub">Affrontez un ami ou défiez l'ordinateur.</p>
+
+      <div class="menu-grid">
+        <button class="menu-btn menu-btn-primary" data-mode="multi">
+          <span class="menu-icon">
+              <img src="/public/assets/11multiplayer.png" class="menu-icon-img">
+          </span>
+          <span class="menu-label">Multijoueur</span>
+          <span class="menu-desc">2 joueurs sur le même écran</span>
+        </button>
+        <button class="menu-btn menu-btn-accent" data-mode="ai">
+          <span class="menu-icon">
+              <img src="/public/assets/ai-icone.png" class="menu-icon-ai-img">
+          </span>
+          <span class="menu-label">Jouer contre l'IA</span>
+          <span class="menu-desc">Mode solo, choix de difficulté</span>
+        </button>
+      </div>
+
+      <div id="difficulty-section" style="display:none">
+        <h3 class="menu-section-title">Niveau de difficulté</h3>
+        <div class="menu-grid">
+          <button class="menu-btn menu-btn-secondary" data-diff="easy">
+            <span class="menu-icon">🟢</span>
+            <span class="menu-label">Facile</span>
+            <span class="menu-desc">L'IA joue aléatoirement</span>
+          </button>
+          <button class="menu-btn menu-btn-secondary" data-diff="hard">
+            <span class="menu-icon">🔴</span>
+            <span class="menu-label">Difficile</span>
+            <span class="menu-desc">Stratégie : capture, attaque les faibles</span>
+          </button>
+        </div>
+        <button class="menu-back" id="menu-back-mode">← Retour au choix du mode</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/units.js"></script>
+  <script src="/js/grid.js"></script>
+  <script src="/js/events.js"></script>
+  <script src="/js/timer.js"></script>
+  <script src="/js/dice.js"></script>
+  <script src="/js/gameplay.js"></script>
+  <script src="/js/render.js"></script>
+  <script src="/js/ai.js"></script>
+  <script src="/js/menu.js"></script>
+</body>
+</html>
